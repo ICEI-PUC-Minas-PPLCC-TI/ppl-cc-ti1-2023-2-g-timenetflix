@@ -3,8 +3,6 @@
 
 O objetivo de encontrar filmes pode se tornar uma tarefa desafiadora em meio à vastidão de opções disponíveis atualmente. Com a proliferação de plataformas de streaming, catálogos cada vez mais extensos e uma diversidade de gêneros cinematográficos, os espectadores podem sentir-se sobrecarregados ao tentar escolher o filme ideal para assistir. Além disso, as preferências individuais variam amplamente, tornando ainda mais difícil encontrar um filme que satisfaça todas as expectativas. Nesse contexto, a busca por filmes transformou-se em uma jornada de exploração, com o desafio de equilibrar a busca por algo novo e surpreendente com a necessidade de encontrar um filme que corresponda ao estado de espírito e aos interesses do momento.
 
-Para muitos, a dificuldade em encontrar filmes pode também ser resultado de uma sobrecarga de informações e recomendações, muitas vezes baseadas em algoritmos de recomendação que nem sempre acertam em cheio nas preferências individuais. A diversidade cultural e a riqueza das opções cinematográficas são positivas, mas podem gerar uma sensação de paralisia de escolha. Para superar essa dificuldade, muitos recorrem a redes sociais, críticas de filmes, grupos de discussão e recomendações pessoais, buscando orientações de outros espectadores que compartilham seus gostos ou que possam apontar pérolas cinematográficas. Encontrar filmes pode, assim, ser um desafio intrigante, mas também uma oportunidade de descobrir novos mundos, narrativas e experiências emocionais através do cinema.
-
 ## Alunos integrantes da equipe
 
 * Adelino Compiani Neto
