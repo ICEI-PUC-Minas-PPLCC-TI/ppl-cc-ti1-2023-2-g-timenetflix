@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>What to Watch</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> 
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS para o fundo cinza escuro */
+        body {
+            background-color: #333;
+            color: #fff;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* CSS para o footer */
+        footer {
+            background-color: #222;
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos adicionais para garantir que o conteúdo não fique sob o footer */
+        .container {
+            padding-bottom: 60px; /* Altura do footer + espaço adicional */
+        }
+
+        /* CSS para as estrelas */
+        .star-rating {
+            font-size: 24px;
+        }
+
+        .star-rating i {
+            cursor: pointer;
+        }
+
+        .star-rating .fa-star {
+            color: #FFD700;
+        }
+
+        .star-rating .fa-star-o {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">What to Watch</a>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">What to Watch</h1>
+
+        <form id="movieForm">
+            <div class="form-group">
+                <label for="movieName">Nome do Filme:</label>
+                <input type="text" class="form-control" id="movieName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="movieDescription">Descrição:</label>
+                <textarea class="form-control" id="movieDescription" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="movieRating">Avaliação:</label>
+                <div class="star-rating" id="movieRating">
+                    <i class="far fa-star" data-rating="1"></i>
+                    <i class="far fa-star" data-rating="2"></i>
+                    <i class="far fa-star" data-rating="3"></i>
+                    <i class="far fa-star" data-rating="4"></i>
+                    <i class="far fa-star" data-rating="5"></i>
+                    <input type="hidden" name="rating" id="rating" value="0">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="movieImage">Imagem:</label>
+                <input type="file" class="form-control-file" id="movieImage" accept="image/*" required>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="addMovie()">Enviar Filme</button>
+        </form>
+
+        <div id="movieList" class="mt-5">
+            <!-- A lista de filmes será exibida aqui -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 What to Watch</p>
+    </footer>
+
+    <script>
+        // JavaScript para a classificação de estrelas
+        const starRating = document.querySelector('.star-rating');
+        const ratingInput = document.querySelector('#rating');
+
+        starRating.addEventListener('click', (event) => {
+            if (event.target.classList.contains('fa-star')) {
+                const rating = parseInt(event.target.getAttribute('data-rating'));
+                ratingInput.value = rating;
+
+                // Atualizar as cores das estrelas
+                const stars = starRating.querySelectorAll('.fa-star');
+                stars.forEach((star) => {
+                    const starRatingValue = parseInt(star.getAttribute('data-rating'));
+                    if (starRatingValue <= rating) {
+                        star.classList.remove('far');
+                        star.classList.add('fas');
+                    } else {
+                        star.classList.remove('fas');
+                        star.classList.add('far');
+                    }
+                });
+            }
+        });
+
+        function addMovie() {
+            const movieName = document.getElementById("movieName").value;
+            const movieDescription = document.getElementById("movieDescription").value;
+            const movieRating = document.getElementById("rating").value;
+            const movieImage = document.getElementById("movieImage").files[0];
+
+           
+
+            // Exemplo de exibição dos dados na página:
+            const movieList = document.getElementById("movieList");
+            const movieElement = document.createElement("div");
+            movieElement.innerHTML = `
+                <h2>${movieName}</h2>
+                <p>${movieDescription}</p>
+                <p>Avaliação: ${movieRating}</p>
+                <img src="${URL.createObjectURL(movieImage)}" alt="${movieName}" width="200">
+            `;
+            movieList.appendChild(movieElement);
+        }
+    </script>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
