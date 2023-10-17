@@ -16,9 +16,10 @@
       margin: 0;
       padding: 0;
     }
-    /* Classe para aumentar o tamanho da fonte na parte "Filme Recebido!" do modal */
+
+
     .larger-font {
-        font-size: 40px; 
+      font-size: 40px;
     }
 
 
@@ -41,7 +42,7 @@
     /* CSS para o footer */
     footer {
       background-color: #222;
-      padding: 90px 0;
+      padding: 120px 0;
       text-align: center;
       color: #fff;
       position: relative;
@@ -76,12 +77,16 @@
       background-color: rgba(0, 0, 0, 1);
       /* Define um fundo escuro  */
     }
-    /* Estilo para a imagem no modal */
+
     #modalMovieImage {
-        width: 100%;
-        height: auto;
+      width: 100%;
+      height: auto;
     }
 
+    .movie-item {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
   </style>
 </head>
 
@@ -153,11 +158,19 @@
       </div>
 
       <button type="button" class="btn btn-primary" onclick="addMovie()">Enviar Filme</button>
+      <button id="showMovieListButton" class="btn btn-primary" type="button" onclick="showMovieList()">Mostrar Filmes
+        Recebidos</button>
+
+
     </form>
 
-    <div id="movieList" class="mt-5">
-      <!-- A lista de filmes será exibida aqui -->
+    <div id="movieList" class="mt-5" style="display: none;">
+      <button id="hideMovieListButton" class="btn btn-secondary" onclick="hideMovieList()">Ocultar Lista de
+        Filmes</button>
+
     </div>
+
+
   </div>
   <div class="modal fade dark-modal" id="movieReceivedModal" tabindex="-1" role="dialog"
     aria-labelledby="movieReceivedModalLabel" aria-hidden="true">
@@ -170,14 +183,14 @@
           </button>
         </div>
         <div class="modal-body">
-            <p><strong>Nome do Filme:</strong> <span id="modalMovieName"></span></p>
-            <p><strong>Descrição:</strong> <span id="modalMovieDescription"></span></p>
-            <p><strong>Gênero:</strong> <span id="modalMovieGenre"></span></p>
-            <p><strong>Avaliação:</strong> <span id="modalMovieRating"></span></p>
-            <img id="modalMovieImage" alt="Imagem do Filme">
+          <p><strong>Nome do Filme:</strong> <span id="modalMovieName"></span></p>
+          <p><strong>Descrição:</strong> <span id="modalMovieDescription"></span></p>
+          <p><strong>Gênero:</strong> <span id="modalMovieGenre"></span></p>
+          <p><strong>Avaliação:</strong> <span id="modalMovieRating"></span></p>
+          <img id="modalMovieImage" alt="Imagem do Filme">
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
         </div>
       </div>
     </div>
@@ -188,7 +201,23 @@
   </footer>
 
   <script>
-    // JavaScript para a classificação de estrelas
+    // Função para atualizar a classificação de estrelas
+    function updateStarRating(rating) {
+      const stars = document.querySelectorAll('.star-rating i');
+      stars.forEach((star, index) => {
+        if (index < rating) {
+          star.classList.remove('far');
+          star.classList.add('fas');
+        } else {
+          star.classList.remove('fas');
+          star.classList.add('far');
+        }
+      });
+    }
+
+    // Configuração inicial da classificação de estrelas
+    updateStarRating(0);
+
     const starRating = document.querySelector('.star-rating');
     const ratingInput = document.querySelector('#rating');
 
@@ -196,55 +225,103 @@
       if (event.target.classList.contains('fa-star')) {
         const rating = parseInt(event.target.getAttribute('data-rating'));
         ratingInput.value = rating;
-
-        // Atualizar as cores das estrelas
-        const stars = starRating.querySelectorAll('.fa-star');
-        stars.forEach((star) => {
-          const starRatingValue = parseInt(star.getAttribute('data-rating'));
-          if (starRatingValue <= rating) {
-            star.classList.remove('far');
-            star.classList.add('fas');
-          } else {
-            star.classList.remove('fas');
-            star.classList.add('far');
-          }
-        });
+        updateStarRating(rating);
       }
+    });
+    const express = require('express');
+    const bodyParser = require('body-parser');
+    const fs = require('fs');
+    const path = require('path');
+    const multer = require('multer');
+    const app = express();
+    const port = 3000;
+
+    app.use(bodyParser.json());
+
+    app.post('/movies', (req, res) => {
+      const newMovie = req.body;
+      // Ler o conteúdo atual do arquivo movies.json, ou criar um array vazio se o arquivo não existir.
+      let movies = [];
+      if (fs.existsSync('movies.json')) {
+        const data = fs.readFileSync('movies.json', 'utf-8');
+        movies = JSON.parse(data);
+      }
+      // Adicionar o novo filme à lista de filmes.
+      movies.push(newMovie);
+      // Salvar a lista atualizada no arquivo movies.json.
+      fs.writeFileSync('movies.json', JSON.stringify(movies, null, 2));
+
+      console.log('Novo filme recebido:', newMovie);
+      res.send('Filme recebido com sucesso!');
+    });
+
+    app.listen(port, () => {
+      console.log(`Servidor está rodando em http://localhost:${port}`);
     });
 
     function addMovie() {
-      const movieName = document.getElementById("movieName").value;
-      const movieDescription = document.getElementById("movieDescription").value;
-      const movieGenre = document.getElementById("movieGenre").value;
-      const movieRating = document.getElementById("rating").value;
-      const movieImage = document.getElementById("movieImage").files[0];
+      const movieName = document.getElementById('movieName').value;
+      const movieDescription = document.getElementById('movieDescription').value;
+      const movieGenre = document.getElementById('movieGenre').value;
+      const movieRating = document.getElementById('rating').value;
+      const movieImage = document.getElementById('movieImage').files[0];
 
-      // Exemplo de exibição dos dados na página:
+      const newMovie = {
+        nome: movieName,
+        descrição: movieDescription,
+        gênero: movieGenre,
+        classificação: parseInt(movieRating),
+        imagem: movieImage.name,
+      };
+
+      const formData = new FormData();
+      formData.append("name", movieName);
+      formData.append("description", movieDescription);
+      formData.append("rating", movieRating);
+      formData.append("genre", movieGenre);
+      formData.append("image", movieImage);
+
+      fetch('/movies', {
+        method: 'POST',
+        body: formData,
+      })
+        .then(() => {
+          // Exibir o modal de aviso após enviar o filme com sucesso.
+          document.getElementById('modalMovieName').textContent = movieName;
+          document.getElementById('modalMovieDescription').textContent = movieDescription;
+          document.getElementById('modalMovieRating').textContent = movieRating;
+          document.getElementById('modalMovieGenre').textContent = movieGenre;
+          document.getElementById('modalMovieImage').src = URL.createObjectURL(movieImage);
+          $('#movieReceivedModal').modal('show');
+        })
+        .catch((error) => console.error(error));
       const movieList = document.getElementById("movieList");
       const movieElement = document.createElement("div");
       movieElement.innerHTML = `
-            <h2>${movieName}</h2>
-            <p>${movieDescription}</p>
-            <p>Gênero: ${movieGenre}</p> <!-- Adicione esta linha -->
-            <p>Avaliação: ${movieRating}</p>
-            <img src="${URL.createObjectURL(movieImage)}" alt="${movieName}" width="200">
-        `;
-
-      //Vai ser ativado quando o site estiver completo
-      //movieList.appendChild(movieElement); 
-
-
-      document.getElementById("modalMovieName").textContent = movieName;
-      document.getElementById("modalMovieDescription").textContent = movieDescription;
-      document.getElementById("modalMovieRating").textContent = movieRating;
-      document.getElementById("modalMovieGenre").textContent = movieGenre;
-      document.getElementById("modalMovieImage").src = URL.createObjectURL(movieImage);
-
-      // Exibir o modal de aviso
-      $('#movieReceivedModal').modal('show');
+      <div class="movie-item">
+          <h2>${movieName}</h2>
+          <p>${movieDescription}</p>
+          <p>Avaliação: ${movieRating}</p>
+          <img src="${URL.createObjectURL(movieImage)}" alt="${movieName}" width="200">
+          </div>
+      `;
+      movieList.appendChild(movieElement);
+    }
+    function showMovieList() {
+      const movieList = document.getElementById("movieList");
+      movieList.style.display = "block"; // Mostra a lista
+    }
+    function hideMovieList() {
+      const movieList = document.getElementById("movieList");
+      movieList.style.display = "none"; // Oculta a lista
     }
 
+
+
+
   </script>
+
+
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
