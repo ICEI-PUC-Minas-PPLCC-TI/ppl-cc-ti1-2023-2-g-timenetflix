@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content {
+  max-width: 972px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.now-playing .carousel .carousel-inner {
+  border-radius: 8px;
+}
+
+.now-playing .carousel .carousel-inner .carousel-caption h1 {
+  background: #fff;
+  color: #000;
+  padding: 1rem;
+  border-radius: 8px;
+}
