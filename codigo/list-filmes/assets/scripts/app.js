@@ -1,12 +1,13 @@
 const carouselInner = document.querySelector(".carousel-inner");
 const gallery = document.querySelector(".gallery");
 const arrowBtns = document.querySelectorAll(".wrapper i");
-const galleryChildrens = [...gallery.children];
 
 window.onload = () => {
   loadSlideImages();
   loadPopularMovies();
-}
+};
+
+const galleryChildrens = [...gallery.children];
 
 async function loadSlideImages() {
   const res = await fetch("https://movies--rodrigomsrocha.repl.co/now_playing");
@@ -33,6 +34,8 @@ async function loadSlideImages() {
   carouselInner.querySelector(".carousel-item").classList.add("active");
 }
 
+let firstGalleryItemWidth;
+
 async function loadPopularMovies() {
   const res = await fetch("https://movies--rodrigomsrocha.repl.co/popular");
   const data = await res.json();
@@ -44,14 +47,18 @@ async function loadPopularMovies() {
     };
   });
 
-  formattedPopular.forEach(movie => {
+  formattedPopular.forEach((movie) => {
     gallery.innerHTML += `
       <li class="gallery-item">
-        <img src="${movie.poster}" alt="${movie.title}">
+        <div class="poster">
+          <img src="${movie.poster}" alt="${movie.title}">
+        </div>
         <strong>${movie.title}</strong>
       </li>
-    `
-  })
+    `;
+  });
+
+  firstGalleryItemWidth = gallery.querySelector(".gallery-item").offsetWidth;
 }
 
 let isDragging = false,
@@ -75,15 +82,6 @@ function dragStop() {
   gallery.classList.remove("dragging");
 }
 
-const firstGalleryItemWidth =
-  gallery.querySelector(".gallery-item").offsetWidth;
-arrowBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    gallery.scrollLeft +=
-      btn.id === "left" ? -firstGalleryItemWidth : firstGalleryItemWidth;
-  });
-});
-
 let itensPerView = Math.round(gallery.offsetWidth / firstGalleryItemWidth);
 galleryChildrens
   .slice(-itensPerView)
@@ -96,19 +94,31 @@ galleryChildrens.slice(0, itensPerView).forEach((card) => {
   gallery.insertAdjacentHTML("beforeend", card.outerHTML);
 });
 
+gallery.classList.add("no-transition");
+gallery.scrollLeft = gallery.offsetWidth;
+gallery.classList.remove("no-transition");
+
+arrowBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    gallery.scrollLeft +=
+      btn.id === "left" ? -firstGalleryItemWidth : firstGalleryItemWidth;
+  });
+});
+
 function infiniteScroll() {
+  arrowBtns.forEach(btn => {
+    btn.classList.remove("disabled");
+  })
+
   if (gallery.scrollLeft === 0) {
-    gallery.classList.add("no-transition");
-    gallery.scrollLeft = gallery.scrollWidth - 2 * gallery.offsetWidth;
-    gallery.classList.remove("no-transition");
+    arrowBtns[0].classList.add("disabled");
   }
+
   if (
     Math.ceil(gallery.scrollLeft) ===
     gallery.scrollWidth - gallery.offsetWidth
   ) {
-    gallery.classList.add("no-transition");
-    gallery.scrollLeft = gallery.offsetWidth;
-    gallery.classList.remove("no-transition");
+    arrowBtns[1].classList.add("disabled");
   }
 }
 

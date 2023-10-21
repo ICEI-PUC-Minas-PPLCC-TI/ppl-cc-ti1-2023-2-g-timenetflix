@@ -55,6 +55,11 @@
   cursor: pointer;
 }
 
+.wrapper i.disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
 .wrapper i:first-child {
   left: -22px;
 }
@@ -101,16 +106,21 @@
   flex-direction: column;
 }
 
-.gallery .gallery-item img {
+.gallery .gallery-item .poster {
   height: 300px;
-  border-radius: 8px;
   aspect-ratio: 3/4;
+}
+
+.gallery .gallery-item .poster img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
   object-fit: cover;
 }
 
 @media screen and (max-width: 900px) {
   .gallery {
-    grid-auto-columns: calc((100%/3) - 12px);
+    grid-auto-columns: calc((100%/3) - 10px);
   }
 }
 
