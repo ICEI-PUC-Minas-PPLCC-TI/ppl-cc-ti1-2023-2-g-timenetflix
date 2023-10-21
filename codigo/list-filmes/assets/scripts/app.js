@@ -1,13 +1,15 @@
 const carouselInner = document.querySelector(".carousel-inner");
-const gallery = document.querySelector(".gallery");
-const arrowBtns = document.querySelectorAll(".wrapper i");
+const galleries = document.querySelectorAll(".gallery");
+const popularGallery = document.querySelector("#popular .gallery-inner");
+const topRatedGallery = document.querySelector("#top-rated .gallery-inner");
+const upcomingGallery = document.querySelector("#upcoming .gallery-inner");
 
 window.onload = () => {
   loadSlideImages();
   loadPopularMovies();
+  loadTopRatedMovies();
+  loadUpcomingMovies();
 };
-
-const galleryChildrens = [...gallery.children];
 
 async function loadSlideImages() {
   const res = await fetch("https://movies--rodrigomsrocha.repl.co/now_playing");
@@ -48,7 +50,7 @@ async function loadPopularMovies() {
   });
 
   formattedPopular.forEach((movie) => {
-    gallery.innerHTML += `
+    popularGallery.innerHTML += `
       <li class="gallery-item">
         <div class="poster">
           <img src="${movie.poster}" alt="${movie.title}">
@@ -58,71 +60,125 @@ async function loadPopularMovies() {
     `;
   });
 
-  firstGalleryItemWidth = gallery.querySelector(".gallery-item").offsetWidth;
+  firstGalleryItemWidth = popularGallery.firstElementChild.offsetWidth;
 }
 
-let isDragging = false,
-  startX,
-  startScrollLeft;
-
-function dragStart(e) {
-  isDragging = true;
-  gallery.classList.add("dragging");
-  startX = e.pageX;
-  startScrollLeft = gallery.scrollLeft;
-}
-
-function dragging(e) {
-  if (!isDragging) return;
-  gallery.scrollLeft = startScrollLeft - (e.pageX - startX);
-}
-
-function dragStop() {
-  isDragging = false;
-  gallery.classList.remove("dragging");
-}
-
-let itensPerView = Math.round(gallery.offsetWidth / firstGalleryItemWidth);
-galleryChildrens
-  .slice(-itensPerView)
-  .reverse()
-  .forEach((card) => {
-    gallery.insertAdjacentHTML("afterbegin", card.outerHTML);
+async function loadTopRatedMovies() {
+  const res = await fetch("https://movies--rodrigomsrocha.repl.co/top_rated");
+  const data = await res.json();
+  const formattedPopular = data.slice(0, 10).map((movie) => {
+    return {
+      id: movie.id,
+      title: movie.title,
+      poster: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
+    };
   });
 
-galleryChildrens.slice(0, itensPerView).forEach((card) => {
-  gallery.insertAdjacentHTML("beforeend", card.outerHTML);
-});
-
-gallery.classList.add("no-transition");
-gallery.scrollLeft = gallery.offsetWidth;
-gallery.classList.remove("no-transition");
-
-arrowBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    gallery.scrollLeft +=
-      btn.id === "left" ? -firstGalleryItemWidth : firstGalleryItemWidth;
+  formattedPopular.forEach((movie) => {
+    topRatedGallery.innerHTML += `
+      <li class="gallery-item">
+        <div class="poster">
+          <img src="${movie.poster}" alt="${movie.title}">
+        </div>
+        <strong>${movie.title}</strong>
+      </li>
+    `;
   });
-});
-
-function infiniteScroll() {
-  arrowBtns.forEach(btn => {
-    btn.classList.remove("disabled");
-  })
-
-  if (gallery.scrollLeft === 0) {
-    arrowBtns[0].classList.add("disabled");
-  }
-
-  if (
-    Math.ceil(gallery.scrollLeft) ===
-    gallery.scrollWidth - gallery.offsetWidth
-  ) {
-    arrowBtns[1].classList.add("disabled");
-  }
 }
 
-gallery.addEventListener("scroll", infiniteScroll);
-gallery.addEventListener("mousedown", dragStart);
-gallery.addEventListener("mousemove", dragging);
-document.addEventListener("mouseup", dragStop);
+async function loadUpcomingMovies() {
+  const res = await fetch("https://movies--rodrigomsrocha.repl.co/upcoming");
+  const data = await res.json();
+  const formattedPopular = data.slice(0, 10).map((movie) => {
+    return {
+      id: movie.id,
+      title: movie.title,
+      poster: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
+    };
+  });
+
+  formattedPopular.forEach((movie) => {
+    upcomingGallery.innerHTML += `
+      <li class="gallery-item">
+        <div class="poster">
+          <img src="${movie.poster}" alt="${movie.title}">
+        </div>
+        <strong>${movie.title}</strong>
+      </li>
+    `;
+  });
+}
+
+galleries.forEach((gallery) => {
+  const arrowBtns = gallery.querySelectorAll(".wrapper button");
+  const galleryInner = gallery.querySelector(".gallery-inner");
+  console.log(arrowBtns);
+
+  let isDragging = false,
+    startX,
+    startScrollLeft;
+
+  function dragStart(e) {
+    isDragging = true;
+    galleryInner.classList.add("dragging");
+    startX = e.pageX;
+    startScrollLeft = galleryInner.scrollLeft;
+  }
+
+  function dragging(e) {
+    if (!isDragging) return;
+    galleryInner.scrollLeft = startScrollLeft - (e.pageX - startX);
+  }
+
+  function dragStop() {
+    isDragging = false;
+    galleryInner.classList.remove("dragging");
+  }
+
+  let itensPerView = Math.round(galleryInner.offsetWidth / firstGalleryItemWidth);
+  const galleryChildrens = Array.from(galleryInner.children);
+
+  galleryChildrens
+    .slice(-itensPerView)
+    .reverse()
+    .forEach((card) => {
+      galleryInner.insertAdjacentHTML("afterbegin", card.outerHTML);
+    });
+
+  galleryChildrens.slice(0, itensPerView).forEach((card) => {
+    galleryInner.insertAdjacentHTML("beforeend", card.outerHTML);
+  });
+
+  galleryInner.classList.add("no-transition");
+  galleryInner.scrollLeft = galleryInner.offsetWidth;
+  galleryInner.classList.remove("no-transition");
+
+  arrowBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      galleryInner.scrollLeft +=
+        btn.id === "left" ? -firstGalleryItemWidth : firstGalleryItemWidth;
+    });
+  });
+
+  function coruselEdge() {
+    arrowBtns.forEach((btn) => {
+      btn.removeAttribute("disabled");
+    });
+
+    if (galleryInner.scrollLeft === 0) {
+      arrowBtns[0].setAttribute("disabled", true);
+    }
+
+    if (
+      Math.ceil(galleryInner.scrollLeft) ===
+      galleryInner.scrollWidth - galleryInner.offsetWidth
+    ) {
+      arrowBtns[1].setAttribute("disabled", true);
+    }
+  }
+
+  galleryInner.addEventListener("scroll", coruselEdge);
+  galleryInner.addEventListener("mousedown", dragStart);
+  galleryInner.addEventListener("mousemove", dragging);
+  document.addEventListener("mouseup", dragStop);
+});
