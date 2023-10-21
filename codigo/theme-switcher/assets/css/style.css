@@ -1,0 +1,27 @@
+:root {
+    --border: #023E73;
+    --bg: #026873;
+    --fg: #62A1D9;
+    --text: #FAFAFA;
+    --secundary-text: #F0F0F0;
+    --primary: #04D939;
+}
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+.dropdown .dropdown-menu{
+    background-color: var(--bg);
+    color: var(--text);
+}
+.content{
+    background-color: var(--fg);
+    border: 1px solid var(--border);
+}
+button{
+    background-color: var(--border);
+    color:var(--text)
+}
+a {
+    color: var(--primary);
+}
