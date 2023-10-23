@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What to Watch: Busca por preferência</title>
+</head>
+
+<body>
+  <link rel="stylesheet" href="style.css" />
+  <form action="https://jsonserver.andresalves01.repl.co/preferences" method="post" enctype="application/json"
+    id="form">
+    <label for="include-adult">Incluir Filmes Adultos?</label>
+    <input type="checkbox" name="include-adult" value="true">
+
+    <label for="preferred-languages">Idioma:</label>
+    <select name="preferred-languages" id="preferred-languages">
+      <option selected value="">Selecione uma opção</option>
+      <!-- Language options will be populated here -->
+    </select>
+
+    <label for="preferred-genres">Genêro:</label>
+    <select name="preferred-genres" id="preferred-genres">
+      <option selected value="">Selecione uma opção</option>
+      <!-- Genre options will be populated here -->
+    </select>
+
+    <label for="minimum-release-date">Data de lançamento mínima</label>
+    <input type="date" name="minimum-release-date" id="minimum-release-date">
+
+    <label for="maximum-release-date">Data de lançamento máxima</label>
+    <input type="date" name="maximum-release-date" id="maximum-release-date">
+
+    <label for="region">Região</label>
+    <select name="region" id="region">
+      <option selected value="">Selecione uma opção</option>
+      <!-- Genre options will be populated here -->
+    </select>
+
+    <label for="minimum-rate">Avaliação mínima</label>
+    <input type="number" name="minimum-rate" id="minimum-rate" min="1" max="10">
+
+    <label for="maximum-rate">Avaliação máxima</label>
+    <input type="number" name="maximum-rate" id="maximum-rate" min="1" max="10">
+
+    <label for="minimum-runtime">Duração mínima</label>
+    <input type="number" name="minimum-runtime" id="minimum-runtime" min="0">
+
+    <label for="maximum-runtime">Duração máxima</label>
+    <input type="number" name="maximum-runtime" id="maximum-runtime" min="0">
+
+    <label for="provider">Serviço de Streaming</label>
+    <select name="provider" id="provider" disabled="disabled">
+      <option selected disabled>Selecione uma opção</option>
+    </select>
+
+    <label for="keywords">Palavras chave:</label>
+    <input type="text" name="keywords" id="keywords">
+
+    <input type="submit" value="Salvar ou atualizar preferências">
+  </form>
+
+  <button type="submit" id="search-btn">Pesquisar utilizando preferências salvas</button>
+
+  <div id="movies-list"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>
