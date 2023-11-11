@@ -1,5 +1,11 @@
-const inputFieldOne = document.getElementById("first-movie")
-const inputFieldTwo = document.getElementById("second-movie")
+const inputFieldOne = document.getElementById("first-movie");
+const inputFieldTwo = document.getElementById("second-movie");
+const getMovieBtn = document.querySelector(".submit-btn");
+const firstMovieLabel = document.querySelector("[for='first-movie']");
+const secondMovieLabel = document.querySelector("[for='second-movie']");
+const recommendationsDiv = document.querySelector(".recommendations");
+
+let firstMovieId, secondMovieId;
 
 const debounce = (func, delay) => {
   let timeoutId;
@@ -49,7 +55,7 @@ async function fetchData(inputField) {
       resultsDiv.classList.add("results");
       inputField.insertAdjacentHTML("afterend", resultsDiv.outerHTML);
     }
-  } catch(error) {
+  } catch (error) {
     console.error("Error fetching data:", error);
   }
 }
@@ -70,48 +76,103 @@ function generateHTMLContent(data) {
     .join("");
 }
 
+async function getRecommendations(e) {
+  e.preventDefault();
+  console.log(firstMovieLabel);
+  if (!firstMovieLabel.id && !secondMovieLabel.id) return;
+
+  try {
+    const response1 = await fetch(
+      `https://api.themoviedb.org/3/movie/${firstMovieLabel.id}/recommendations`,
+      {
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZjA1ZjdlOWUzNDk2N2MxYThmYzM4MTk4ODJhMjU4YiIsInN1YiI6IjYwM2IyMWMyMTc2YTk0MDA0ZjU1YjQzYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TfBidjP9aLgFQPowvIE1Kpa9GMdwe-8Pv922G6Em1SY",
+        },
+      }
+    );
+    const data1 = await response1.json();
+    const formattedData1 = data1.results.slice(0, 2);
+
+    const response2 = await fetch(
+      `https://api.themoviedb.org/3/movie/${secondMovieLabel.id}/recommendations`,
+      {
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZjA1ZjdlOWUzNDk2N2MxYThmYzM4MTk4ODJhMjU4YiIsInN1YiI6IjYwM2IyMWMyMTc2YTk0MDA0ZjU1YjQzYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TfBidjP9aLgFQPowvIE1Kpa9GMdwe-8Pv922G6Em1SY",
+        },
+      }
+    );
+    const data2 = await response2.json();
+    const formattedData2 = data2.results.slice(0, 2);
+
+    const recommendations = [...formattedData1, ...formattedData2];
+
+    recommendations.forEach((recommendation) => {
+      recommendationsDiv.innerHTML += `
+        <div class="recommendation">
+          ${
+            recommendation.poster_path !== null
+              ? `<img class='poster' src='https://image.tmdb.org/t/p/original${recommendation.poster_path}' />`
+              : "<div class='poster' />"
+          }
+          <h1>${recommendation.title}</h1>
+        </div>
+      `;
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 const debouncedFetchData1 = debounce(() => fetchData(inputFieldOne), 500);
 const debouncedFetchData2 = debounce(() => fetchData(inputFieldTwo), 500);
 
 inputFieldOne.addEventListener("input", debouncedFetchData1);
 inputFieldTwo.addEventListener("input", debouncedFetchData2);
 
-document.addEventListener('mousedown', (event) => {
+document.addEventListener("mousedown", (event) => {
   const clickedElement = event.target;
 
-  const isResultsItem = clickedElement.closest('.results-item');
+  const isResultsItem = clickedElement.closest(".results-item");
 
   if (isResultsItem) {
     // Extract information from the clicked item
-    const posterPath = isResultsItem.querySelector('img').src;
+    const posterPath = isResultsItem.querySelector("img").src;
     const movieId = isResultsItem.id;
-    
-    const parentContainer = isResultsItem.parentNode.parentNode;
-    const siblingLabel = parentContainer.querySelector('.option-poster');
 
-    if (siblingLabel && siblingLabel.tagName === 'LABEL') {
-      siblingLabel.innerHTML = ''; // Clear existing content
-      const posterImage = document.createElement('img');
+    const parentContainer = isResultsItem.parentNode.parentNode;
+    const siblingLabel = parentContainer.querySelector(".option-poster");
+
+    if (siblingLabel && siblingLabel.tagName === "LABEL") {
+      siblingLabel.innerHTML = ""; // Clear existing content
+      const posterImage = document.createElement("img");
       posterImage.src = posterPath;
-      posterImage.classList.add("poster")
+      posterImage.classList.add("poster");
       siblingLabel.appendChild(posterImage);
 
       // Store the movie ID for later use
       siblingLabel.dataset.movieId = movieId;
+
+      siblingLabel.id = movieId;
     }
   }
 });
 
-inputFieldOne.addEventListener('blur', () => {
-  const resultsDiv = document.querySelector('.results');
+inputFieldOne.addEventListener("blur", () => {
+  const resultsDiv = document.querySelector(".results");
   if (resultsDiv) {
     resultsDiv.remove();
   }
 });
 
-inputFieldTwo.addEventListener('blur', () => {
-  const resultsDiv = document.querySelector('.results');
+inputFieldTwo.addEventListener("blur", () => {
+  const resultsDiv = document.querySelector(".results");
   if (resultsDiv) {
     resultsDiv.remove();
   }
 });
+
+getMovieBtn.addEventListener("click", (e) => getRecommendations(e));

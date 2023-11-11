@@ -102,8 +102,17 @@ body {
 }
 
 .recommendations {
+  max-width: 1080px;
+  padding: 2rem;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
+}
+
+.recommendations .recommendation {
+  max-width: 400px;
 }
 
 .poster {
@@ -111,4 +120,5 @@ body {
   border-radius: 8px;
   aspect-ratio: 3/4;
   object-fit: cover;
+  background: #f0f0f0;
 }

@@ -1,36 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <script src="assets/scripts/script.js" defer></script>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <title>Recommended</title>
-</head>
-<body>
-  <main class="options-container">
-    <div class="options">
-      <div class="option">
-        <label for="first-movie" class="option-poster">
-          <i class="ph ph-plus"></i>
-        </label>
-        <input type="text" name="first-movie" id="first-movie">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="assets/scripts/script.js" defer></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Recommended</title>
+  </head>
+  <body>
+    <main class="options-container">
+      <div class="options">
+        <div class="option">
+          <label for="first-movie" class="option-poster">
+            <i class="ph ph-plus"></i>
+          </label>
+          <input type="text" name="first-movie" id="first-movie" />
+        </div>
+        <div class="option">
+          <label for="second-movie" class="option-poster">
+            <i class="ph ph-plus"></i>
+          </label>
+          <input type="text" name="second-movie" id="second-movie" />
+        </div>
       </div>
-      <div class="option">
-        <label for="second-movie" class="option-poster">
-          <i class="ph ph-plus"></i>
-        </label>
-        <input type="text" name="second-movie" id="second-movie">
-      </div>
-    </div>
-    <button class="submit-btn">Get movie</button>
-  </main>
-  <div class="recommendations">
-    <img class="poster" src="https://image.tmdb.org/t/p/original/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg" alt="">
-    <img class="poster" src="https://image.tmdb.org/t/p/original/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg" alt="">
-    <img class="poster" src="https://image.tmdb.org/t/p/original/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg" alt="">
-    <img class="poster" src="https://image.tmdb.org/t/p/original/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg" alt="">
-  </div>
-</body>
+      <button class="submit-btn">Get movie</button>
+    </main>
+    <div class="recommendations"></div>
+  </body>
 </html>
