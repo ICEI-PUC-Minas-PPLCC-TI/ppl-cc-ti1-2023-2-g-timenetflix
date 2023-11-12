@@ -115,7 +115,7 @@ async function getRecommendations(e) {
         <div class="recommendation">
           ${
             recommendation.poster_path !== null
-              ? `<img class='poster' src='https://image.tmdb.org/t/p/original${recommendation.poster_path}' />`
+              ? `<img class="poster" src="https://image.tmdb.org/t/p/original${recommendation.poster_path}" />`
               : "<div class='poster' />"
           }
           <h1>${recommendation.title}</h1>

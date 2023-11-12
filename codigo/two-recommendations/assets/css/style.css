@@ -2,12 +2,14 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
   display: grid;
   place-items: center;
   min-height: 100vh;
+  padding: 2rem 0;
 }
 
 .options-container {
@@ -53,7 +55,7 @@ body {
   background: transparent;
   border: 1px dashed #333;
   border-radius: 8px;
-  height: 300px;
+  width: 200px;
   aspect-ratio: 3/4;
   font-size: 2rem;
   transition: 0.2s;
@@ -105,20 +107,31 @@ body {
   max-width: 1080px;
   padding: 2rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
+  margin: 0 auto;
 }
 
-.recommendations .recommendation {
-  max-width: 400px;
+.recommendation {
+  flex: 1;
+  max-width: 200px;
+}
+
+.recommendation h1 {
+  font-size: 1.25rem;
 }
 
 .poster {
-  height: 300px;
+  width: 200px;
   border-radius: 8px;
   aspect-ratio: 3/4;
   object-fit: cover;
   background: #f0f0f0;
+}
+
+@media (max-width: 767px) {
+  .options {
+    flex-direction: column;
+  }
 }
