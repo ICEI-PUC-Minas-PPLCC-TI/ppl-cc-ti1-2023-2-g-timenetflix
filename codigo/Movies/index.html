@@ -1,18 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recomendação de Atores</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="Quadrado">
-    <h1>Ator:</h1>
-     <p>Bred</p>
-  </div>
-  
-  <script src="script.js"></script>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Movie Actors</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="actor-card">
+                    <section>
+                        <div class="title" dir="auto">
+                            <img src="assets/imagens/brad.jpg">
+                            <h2 class="title">
+                                <h1>Brad Pitt</h1>
+                            </h2>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div id="movie-list">
+                    <div id="known_for">
+                        <h3 dir="auto">Conhecido(a) por</h3>
+
+                        <div id="known_for_scroller" class="scroller_wrap should_fade is_fading">
+                            <ul class="lista">
+                                <li class="account_adult_false item_adult_false">
+                                    <div class="image">
+
+                                        <img loading="lazy" class="poster"
+                                            src="https://image.tmdb.org/t/p/original/6UjYycIR6VLYgggfNpmSPJHmFS0.jpg"
+                                            srcset="https://image.tmdb.org/t/p/original/6UjYycIR6VLYgggfNpmSPJHmFS0.jpg 1x, /t/p/w300_and_h450_bestv2/6UjYycIR6VLYgggfNpmSPJHmFS0.jpg 2x"
+                                            alt="Bastardos Inglórios">
+
+
+                                    </div>
+                                    <p><bdi>Bastardos Inglórios</bdi></p>
+                                </li>
+                                <li class="account_adult_false item_adult_false">
+                                    <div class="image">
+
+                                        <img loading="lazy" class="poster"
+                                            src="https://image.tmdb.org/t/p/original/5HImW2XT2oN001IzZ4aw2IOLC4j.jpg"
+                                            srcset="https://image.tmdb.org/t/p/original/5HImW2XT2oN001IzZ4aw2IOLC4j.jpg 1x, /t/p/w300_and_h450_bestv2/5HImW2XT2oN001IzZ4aw2IOLC4j.jpg 2x"
+                                            alt="Guerra Mundial Z">
+
+
+                                    </div>
+                                    <p><bdi>Guerra Mundial Z</bdi></p>
+                                </li>
+                                <li class="account_adult_false item_adult_false">
+                                    <div class="image">
+
+                                        <img loading="lazy" class="poster"
+                                            src="https://image.tmdb.org/t/p/original/r3pPehX4ik8NLYPpbDRAh0YRtMb.jpg"
+                                            srcset="https://image.tmdb.org/t/p/original/r3pPehX4ik8NLYPpbDRAh0YRtMb.jpg 1x, /t/p/w300_and_h450_bestv2/r3pPehX4ik8NLYPpbDRAh0YRtMb.jpg 2x"
+                                            alt="Clube da Luta">
+
+
+                                    </div>
+                                    <p><bdi>Clube da Luta</bdi></p>
+                                </li>
+                                <li class="account_adult_false item_adult_false">
+                                    <div class="image">
+
+                                        <img loading="lazy" class="poster"
+                                            src="https://image.tmdb.org/t/p/original/8qylFwRp5M0O9dc0nb8dSbi9CbV.jpg"
+                                            srcset="https://image.tmdb.org/t/p/original/8qylFwRp5M0O9dc0nb8dSbi9CbV.jpg 1x, /t/p/w300_and_h450_bestv2/8qylFwRp5M0O9dc0nb8dSbi9CbV.jpg 2x"
+                                            alt="O Curioso Caso de Benjamin Button">
+
+
+                                    </div>
+                                    <p><bdi>O Curioso Caso de Benjamin Button</bdi></p>
+                                </li>
+                                <li class="account_adult_false item_adult_false">
+                                    <div class="image">
+
+                                        <img loading="lazy" class="poster"
+                                            src="https://image.tmdb.org/t/p/original/8WtUjpboPESZbabGbC4ryd81KcR.jpg"
+                                            srcset="https://image.tmdb.org/t/p/original/8WtUjpboPESZbabGbC4ryd81KcR.jpg 1x, /t/p/w300_and_h450_bestv2/8WtUjpboPESZbabGbC4ryd81KcR.jpg 2x"
+                                            alt="Corações de Ferro">
+
+
+                                    </div>
+                                    <p><bdi>Corações de Ferro</bdi></p>
+                                </li>
+                                <li class="account_adult_false item_adult_false">
+                                    <div class="image">
+
+                                        <img loading="lazy" class="poster"
+                                            src="https://image.tmdb.org/t/p/original/oN5jOhcnguePfC9u3xzUOp98HzH.jpg"
+                                            srcset="https://image.tmdb.org/t/p/original/oN5jOhcnguePfC9u3xzUOp98HzH.jpg 1x, /t/p/w300_and_h450_bestv2/oN5jOhcnguePfC9u3xzUOp98HzH.jpg 2x"
+                                            alt="Seven: Os Sete Crimes Capitais">
+
+
+                                    </div>
+                                    <p><bdi>Seven: Os Sete Crimes Capitais</bdi></p>
+                                </li>
+                                <li class="account_adult_false item_adult_false">
+                                    <div class="image">
+
+                                        <img loading="lazy" class="poster"
+                                            src="https://image.tmdb.org/t/p/original/xpBYICwTOy67ne4fT3rHvtVBtCe.jpg"
+                                            srcset="https://image.tmdb.org/t/p/original/xpBYICwTOy67ne4fT3rHvtVBtCe.jpg 1x, /t/p/w300_and_h450_bestv2/xpBYICwTOy67ne4fT3rHvtVBtCe.jpg 2x"
+                                            alt="Sr. &amp; Sra. Smith">
+
+
+                                    </div>
+                                    <p><bdi>Sr. &amp; Sra. Smith</bdi></p>
+                                </li>
+                                <li class="account_adult_false item_adult_false">
+                                    <div class="image">
+
+                                        <img loading="lazy" class="poster"
+                                            src="https://image.tmdb.org/t/p/original/iKp2NxUkqPVSPN2FdXUn9gxj4Nn.jpg"
+                                            srcset="https://image.tmdb.org/t/p/original/iKp2NxUkqPVSPN2FdXUn9gxj4Nn.jpg 1x, /t/p/w300_and_h450_bestv2/iKp2NxUkqPVSPN2FdXUn9gxj4Nn.jpg 2x"
+                                            alt="Tróia">
+
+
+                                    </div>
+                                    <p><bdi>Tróia</bdi></p>
+                                </li>
+                                <li class="account_adult_false item_adult_false">
+                                    <div class="image">
+
+                                        <img loading="lazy" class="poster"
+                                            src="https://image.tmdb.org/t/p/original/xpBYICwTOy67ne4fT3rHvtVBtCe.jpg"
+                                            srcset="https://image.tmdb.org/t/p/original/xpBYICwTOy67ne4fT3rHvtVBtCe.jpg 1x, /t/p/w300_and_h450_bestv2/xpBYICwTOy67ne4fT3rHvtVBtCe.jpg 2x"
+                                            alt="Sr. &amp; Sra. Smith">
+
+
+                                    </div>
+                                    <p><bdi>Once Upon a Time in Hollywood</bdi></p>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
