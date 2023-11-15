@@ -1,0 +1,17 @@
+{
+    "avaliacoes": [
+      {
+        "usuario": "Nome do Usuário 1",
+        "nota": 4,
+        "comentario": "Ótimo filme!",
+        "recomenda": "Sim"
+      },
+      {
+        "usuario": "Nome do Usuário 2",
+        "nota": 5,
+        "comentario": "Adorei!",
+        "recomenda": "Sim"
+      }
+    ]
+  }
+  

@@ -1,333 +1,71 @@
-<!DOCTYPE html>
-<html>
-
+    <!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <title>What to Watch</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Avaliação</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* CSS para o fundo cinza escuro */
-    body {
-      background-color: #333;
-      color: #fff;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-
-    .larger-font {
-      font-size: 40px;
-    }
-
-
-    /* Classe para tornar a caixa de texto do nome menor */
-    .smaller-input {
-      width: 50%;
-    }
-
-    /* Classe para tornar a caixa de seleção do gênero menos larga */
-    .smaller-select {
-      width: 25%;
-    }
-
-    /* Classe para tornar a caixa de texto da descrição maior */
-    .larger-input {
-      width: 100%;
-    }
-
-
-    /* CSS para o footer */
-    footer {
-      background-color: #222;
-      padding: 120px 0;
-      text-align: center;
-      color: #fff;
-      position: relative;
-      bottom: 0;
-      width: 100%;
-    }
-
-    /* Estilos adicionais para garantir que o conteúdo não fique sob o footer */
-    .container {
-      padding-bottom: 60px;
-      /* Altura do footer + espaço adicional */
-    }
-
-    /* CSS para as estrelas */
-    .star-rating {
-      font-size: 24px;
-    }
-
-    .star-rating i {
-      cursor: pointer;
-    }
-
-    .star-rating .fa-star {
-      color: #FFD700;
-    }
-
-    .star-rating .fa-star-o {
-      color: #ccc;
-    }
-
-    .dark-modal .modal-content {
-      background-color: rgba(0, 0, 0, 1);
-      /* Define um fundo escuro  */
-    }
-
-    #modalMovieImage {
-      width: 100%;
-      height: auto;
-    }
-
-    .movie-item {
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
-    }
-  </style>
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">What to Watch</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sobre</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Opções</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contato</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <!-- Botão "Deixar minha avaliação" -->
+    <button id="btn" class="btnDeixarAvaliacao">Deixar minha avaliação</button>
 
-
-  <div class="container mt-5">
-    <h1 class="text-center">What to Watch</h1>
-
-    <form id="movieForm">
-      <div class="form-group">
-        <label for="movieName">Nome do Filme:</label>
-        <input type="text" class="form-control smaller-input" id="movieName" required>
-      </div>
-
-      <div class="form-group">
-        <label for="movieDescription">Descrição:</label>
-        <textarea class="form-control larger-input" id="movieDescription" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="movieGenre">Gênero:</label>
-        <select class="form-control smaller-select" id="movieGenre">
-          <option value="Ação">Ação</option>
-          <option value="Comédia">Comédia</option>
-          <option value="Drama">Drama</option>
-          <option value="Ficção Científica">Ficção Científica</option>
-          <option value="Romance">Romance</option>
-          <!-- Adicionar outros gêneros aqui -->
-        </select>
-      </div>
-
-
-
-      <div class="form-group">
-        <label for="movieRating">Avaliação:</label>
-        <div class="star-rating" id="movieRating">
-          <i class="far fa-star" data-rating="1"></i>
-          <i class="far fa-star" data-rating="2"></i>
-          <i class="far fa-star" data-rating="3"></i>
-          <i class="far fa-star" data-rating="4"></i>
-          <i class="far fa-star" data-rating="5"></i>
-          <input type="hidden" name="rating" id="rating" value="0">
+    
+    <!-- Popup de Avaliação -->
+    <div id="popupAvaliacao" class="popup">
+        <!-- Conteúdo do formulário -->
+        <div class="nome">
+            <span id="nomedoUsuario">Nome do Usuário</span>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="movieImage">Imagem:</label>
-        <input type="file" class="form-control-file" id="movieImage" accept="image/*" required>
-      </div>
+        <div class="estrela">
+            <span id="nota">Nota:</span>
+            <a href="javascript:void(0)" onclick="Avaliar(1)">
+                <img src="imagens/star0.png" id="s1"></a>
+            
+            <a href="javascript:void(0)" onclick="Avaliar(2)">
+                <img src="imagens/star0.png" id="s2"></a>
+            
+            <a href="javascript:void(0)" onclick="Avaliar(3)">
+                <img src="imagens/star0.png" id="s3"></a>
+            
+            <a href="javascript:void(0)" onclick="Avaliar(4)">
+                <img src="imagens/star0.png" id="s4"></a>
+            
+            <a href="javascript:void(0)" onclick="Avaliar(5)">
+                <img src="imagens/star0.png" id="s5"></a> <p id="rating">0</p>
+        </div>
+            
+        <textarea id="comentario" placeholder="Escreva aqui seu comentário"></textarea>
 
-      <button type="button" class="btn btn-primary" onclick="addMovie()">Enviar Filme</button>
-      <button id="showMovieListButton" class="btn btn-primary" type="button" onclick="showMovieList()">Mostrar Filmes
-        Recebidos</button>
+        <div class="recomenda">
+            <span id="recomenda">Você recomenda?</span>
+            <span class="emoji" data-recomendacao="Sim" id="recomenda-feliz">😊</span>
+            <span class="emoji" data-recomendacao="Não" id="recomenda-triste">☹️</span>            
+        </div>
 
+        <div class="container">
+            <button id="btnFecharPopup" class="btnFecharPopup">Fechar</button>
 
-    </form>
+            <button id="btnEnviarAvaliacao" class="btnEnviarAvaliacao">Enviar minha avaliação</button>
+            <div id="loadingIcon" class="loading-icon"></div>
 
-    <div id="movieList" class="mt-5" style="display: none;">
-      <button id="hideMovieListButton" class="btn btn-secondary" onclick="hideMovieList()">Ocultar Lista de
-        Filmes</button>
+        </div>
 
     </div>
 
+    <ul id="avaliacoesUsuarios">
+        <!-- As avaliações serão adicionadas aqui dinamicamente via JavaScript -->
+    </ul>
 
-  </div>
-  <div class="modal fade dark-modal" id="movieReceivedModal" tabindex="-1" role="dialog"
-    aria-labelledby="movieReceivedModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title larger-font" id="movieReceivedModalLabel">Filme Recebido!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p><strong>Nome do Filme:</strong> <span id="modalMovieName"></span></p>
-          <p><strong>Descrição:</strong> <span id="modalMovieDescription"></span></p>
-          <p><strong>Gênero:</strong> <span id="modalMovieGenre"></span></p>
-          <p><strong>Avaliação:</strong> <span id="modalMovieRating"></span></p>
-          <img id="modalMovieImage" alt="Imagem do Filme">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-        </div>
-      </div>
-    </div>
-  </div>
+    <!-- Botão "Ver mais avaliações" -->
+    <button id="btnVerMaisAvaliacoes" class="btnVerMaisAvaliacoes">Ver mais avaliações</button>
 
-  <footer>
-    <p>&copy; 2023 What to Watch</p>
-  </footer>
-
-  <script>
-    // Função para atualizar a classificação de estrelas
-    function updateStarRating(rating) {
-      const stars = document.querySelectorAll('.star-rating i');
-      stars.forEach((star, index) => {
-        if (index < rating) {
-          star.classList.remove('far');
-          star.classList.add('fas');
-        } else {
-          star.classList.remove('fas');
-          star.classList.add('far');
-        }
-      });
-    }
-
-    // Configuração inicial da classificação de estrelas
-    updateStarRating(0);
-
-    const starRating = document.querySelector('.star-rating');
-    const ratingInput = document.querySelector('#rating');
-
-    starRating.addEventListener('click', (event) => {
-      if (event.target.classList.contains('fa-star')) {
-        const rating = parseInt(event.target.getAttribute('data-rating'));
-        ratingInput.value = rating;
-        updateStarRating(rating);
-      }
-    });
-    const express = require('express');
-    const bodyParser = require('body-parser');
-    const fs = require('fs');
-    const path = require('path');
-    const multer = require('multer');
-    const app = express();
-    const port = 3000;
-
-    app.use(bodyParser.json());
-
-    app.post('/movies', (req, res) => {
-      const newMovie = req.body;
-      // Ler o conteúdo atual do arquivo movies.json, ou criar um array vazio se o arquivo não existir.
-      let movies = [];
-      if (fs.existsSync('movies.json')) {
-        const data = fs.readFileSync('movies.json', 'utf-8');
-        movies = JSON.parse(data);
-      }
-      // Adicionar o novo filme à lista de filmes.
-      movies.push(newMovie);
-      // Salvar a lista atualizada no arquivo movies.json.
-      fs.writeFileSync('movies.json', JSON.stringify(movies, null, 2));
-
-      console.log('Novo filme recebido:', newMovie);
-      res.send('Filme recebido com sucesso!');
-    });
-
-    app.listen(port, () => {
-      console.log(`Servidor está rodando em http://localhost:${port}`);
-    });
-
-    function addMovie() {
-      const movieName = document.getElementById('movieName').value;
-      const movieDescription = document.getElementById('movieDescription').value;
-      const movieGenre = document.getElementById('movieGenre').value;
-      const movieRating = document.getElementById('rating').value;
-      const movieImage = document.getElementById('movieImage').files[0];
-
-      const newMovie = {
-        nome: movieName,
-        descrição: movieDescription,
-        gênero: movieGenre,
-        classificação: parseInt(movieRating),
-        imagem: movieImage.name,
-      };
-
-      const formData = new FormData();
-      formData.append("name", movieName);
-      formData.append("description", movieDescription);
-      formData.append("rating", movieRating);
-      formData.append("genre", movieGenre);
-      formData.append("image", movieImage);
-
-      fetch('/movies', {
-        method: 'POST',
-        body: formData,
-      })
-        .then(() => {
-          // Exibir o modal de aviso após enviar o filme com sucesso.
-          document.getElementById('modalMovieName').textContent = movieName;
-          document.getElementById('modalMovieDescription').textContent = movieDescription;
-          document.getElementById('modalMovieRating').textContent = movieRating;
-          document.getElementById('modalMovieGenre').textContent = movieGenre;
-          document.getElementById('modalMovieImage').src = URL.createObjectURL(movieImage);
-          $('#movieReceivedModal').modal('show');
-        })
-        .catch((error) => console.error(error));
-      const movieList = document.getElementById("movieList");
-      const movieElement = document.createElement("div");
-      movieElement.innerHTML = `
-      <div class="movie-item">
-          <h2>${movieName}</h2>
-          <p>${movieDescription}</p>
-          <p>Avaliação: ${movieRating}</p>
-          <img src="${URL.createObjectURL(movieImage)}" alt="${movieName}" width="200">
-          </div>
-      `;
-      movieList.appendChild(movieElement);
-    }
-    function showMovieList() {
-      const movieList = document.getElementById("movieList");
-      movieList.style.display = "block"; // Mostra a lista
-    }
-    function hideMovieList() {
-      const movieList = document.getElementById("movieList");
-      movieList.style.display = "none"; // Oculta a lista
-    }
-
-
-
-
-  </script>
-
-
-
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script src="script.js"></script>
 </body>
-
 </html>
+

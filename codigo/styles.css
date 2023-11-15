@@ -1,0 +1,245 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btnDeixarAvaliacao{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background-color: black;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: 7px 20px;
+    border-radius: 100px;
+}
+
+.btnFecharPopup {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background-color: rgb(224, 18, 18);
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: 7px 20px;
+    border-radius: 100px;
+    margin-top: 15px;
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.btnEnviarAvaliacao {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background-color: #08d85e;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: 7px 20px;
+    border-radius: 100px;
+    margin-top: 15px;
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.btnVerMaisAvaliacoes {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background-color:black;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: 7px 20px;
+    border-radius: 100px;
+    /* Outros estilos para o Botão 3 */
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 50px;
+    border: 3px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto; /* Centraliza o popup horizontalmente */
+}
+
+#recomenda {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+    margin-top: 10px; /* Espaçamento superior */
+    margin-bottom: 10px; /* Adiciona espaço abaixo da imagem */
+}
+
+#comentario {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%; /* Largura total */
+    height: 80px; /* Altura do campo de texto */
+    margin-top: 10px; /* Espaçamento superior */
+    margin-bottom: 10px; /* Adiciona espaço abaixo da imagem */
+}
+
+#nota{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 15px; /* Tamanho dos emojis */
+    margin-bottom: 10px; /* Adiciona espaço abaixo da imagem */
+}
+
+#nomedoUsuario{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 15px; /* Tamanho dos emojis */
+    margin-bottom: 10px; /* Adiciona espaço abaixo da imagem */
+}
+
+.recomenda .emoji {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px; /* Tamanho dos emojis */
+    margin-bottom: 10px; /* Adiciona espaço abaixo da imagem */
+    cursor: pointer; /* Transformar o cursor em mãozinha */
+}
+
+.recomenda .emoji.selected {
+    color: green; /* Cor quando selecionado */
+}
+
+.imagens.star0,.imagens.star1 {
+    width: 10px; /* Defina o tamanho desejado aqui */
+    height: 10px; /* Defina o tamanho desejado aqui */
+}
+
+#rating {
+    display: none;
+}
+
+
+.loading-icon {
+    display: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 2px solid #3498db;
+    animation: spin 1s linear infinite;
+    position: relative;
+    top: 10%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ------------------------------- STYLE COMENTARIO ---------------------------------- */
+.comentario-container{
+    display: flex;
+    margin: 10px;
+    top: 10%;
+    left: 5%;
+    background: #fff;
+    padding: 50px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.comentario-user-info{
+    margin-right: 20px;
+    margin: 2px 5px 7px 10px;
+    top: 5%;
+    text-align: right, center;
+    background: #fff;
+    border-radius: 5px;
+    max-width: 100px;
+    width: 100%;
+
+}
+
+.comentario-dados{
+    margin-left: 10px;
+    margin: 2px 5px 7px 10px;
+    top: 1%;
+    background: #fff;
+    padding: 50px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 300px;
+    width: 100%;
+    
+}
+
+.avaliacoesUsuarios{
+    display: flex;
+    margin: 10px;
+    top: 10%;
+    left: 5%;
+    background: #fff;
+    padding: 50px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.user-info{
+    margin-right: 20px;
+    margin: 2px 5px 7px 10px;
+    top: 5%;
+    text-align: right, center;
+    background: #fff;
+    border-radius: 5px;
+    max-width: 100px;
+    width: 100%;
+
+}
+
+.user-dados{
+    margin-left: 10px;
+    margin: 2px 5px 7px 10px;
+    top: 1%;
+    background: #fff;
+    padding: 50px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 300px;
+    width: 100%;
+    
+}
