@@ -1,7 +1,42 @@
+body {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+.dropdown .dropdown-menu{
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+.content{
+  background-color: var(--fg) !important;
+  border: 1px solid var(--border) !important;
+}
+button{
+  background-color: var(--border) !important;
+  color:var(--text) !important
+}
+a {
+  color: var(--text) !important;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+header {
+  background: var(--fg);
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
 }
 
 .content {
@@ -11,6 +46,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  border-radius: 2rem;
 }
 
 .now-playing > h1 {
@@ -23,7 +59,7 @@
 
 .now-playing .carousel .carousel-inner .carousel-caption h1 {
   background: #fff;
-  color: #000;
+  color: var(--primary);
   padding: 1rem;
   border-radius: 8px;
 }
@@ -43,8 +79,6 @@
   display: block;
   height: 50px;
   width: 50px;
-  background: #000;
-  color: #fff;
   text-align: center;
   line-height: 50px;
   border-radius: 8px;

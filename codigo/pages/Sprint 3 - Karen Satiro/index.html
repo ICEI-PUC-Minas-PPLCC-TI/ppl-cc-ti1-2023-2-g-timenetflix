@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendário de lançamento</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+</div>
+
+  <div id="app">
+    <form id="movie-form">
+      <label for="preferred-genres">Gênero:</label>
+      <select name="preferred-genres" id="preferred-genres">
+        <option value="28">Action</option>
+        <option value="12">Adventure</option>
+        <option value="16">Animation</option>
+        <option value="35">Comedy</option>
+        <option value="80">Crime</option>
+        <option value="99">Documentary</option>
+        <option value="10751">Family</option>
+        <option value="18">Drama</option>
+        <option value="36">History</option>
+        <option value="27">Horror</option>
+        <option value="10402">Music</option>
+        <option value="9648">Mystery</option>
+        <option value="10749">Romance</option>
+        <option value="878">Science Fiction</option>
+        <option value="10770">TV Movie</option>
+        <option value="53">Thriller</option>
+        <option value="10752">War</option>
+        <option value="37">Western</option>
+        <!-- Adicione mais opções conforme necessário -->
+      </select>
+
+      <label for="minimum-release-date">Data de lançamento mínima:</label>
+      <input type="date" name="minimum-release-date" id="minimum-release-date">
+
+      <label for="maximum-release-date">Data de lançamento máxima:</label>
+      <input type="date" name="maximum-release-date" id="maximum-release-date">
+
+      <button type="button" id="search-btn">Pesquisar</button>
+    </form>
+
+    <div id="movies-list"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

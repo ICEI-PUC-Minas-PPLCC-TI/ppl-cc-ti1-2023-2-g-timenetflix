@@ -1,0 +1,71 @@
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Avaliação</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Botão "Deixar minha avaliação" -->
+    <button id="btn" class="btnDeixarAvaliacao">Deixar minha avaliação</button>
+
+    
+    <!-- Popup de Avaliação -->
+    <div id="popupAvaliacao" class="popup">
+        <!-- Conteúdo do formulário -->
+        <div class="nome">
+            <span id="nomedoUsuario">Nome do Usuário</span>
+        </div>
+
+        <div class="estrela">
+            <span id="nota">Nota:</span>
+            <a href="javascript:void(0)" onclick="Avaliar(1)">
+                <img src="imagens/star0.png" id="s1"></a>
+            
+            <a href="javascript:void(0)" onclick="Avaliar(2)">
+                <img src="imagens/star0.png" id="s2"></a>
+            
+            <a href="javascript:void(0)" onclick="Avaliar(3)">
+                <img src="imagens/star0.png" id="s3"></a>
+            
+            <a href="javascript:void(0)" onclick="Avaliar(4)">
+                <img src="imagens/star0.png" id="s4"></a>
+            
+            <a href="javascript:void(0)" onclick="Avaliar(5)">
+                <img src="imagens/star0.png" id="s5"></a> <p id="rating">0</p>
+        </div>
+            
+        <textarea id="comentario" placeholder="Escreva aqui seu comentário"></textarea>
+
+        <div class="recomenda">
+            <span id="recomenda">Você recomenda?</span>
+            <span class="emoji" data-recomendacao="Sim" id="recomenda-feliz">😊</span>
+            <span class="emoji" data-recomendacao="Não" id="recomenda-triste">☹️</span>            
+        </div>
+
+        <div class="container">
+            <button id="btnFecharPopup" class="btnFecharPopup">Fechar</button>
+
+            <button id="btnEnviarAvaliacao" class="btnEnviarAvaliacao">Enviar minha avaliação</button>
+            <div id="loadingIcon" class="loading-icon"></div>
+
+        </div>
+
+    </div>
+
+    <ul id="avaliacoesUsuarios">
+        <!-- As avaliações serão adicionadas aqui dinamicamente via JavaScript -->
+    </ul>
+
+    <!-- Botão "Ver mais avaliações" -->
+    <button id="btnVerMaisAvaliacoes" class="btnVerMaisAvaliacoes">Ver mais avaliações</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

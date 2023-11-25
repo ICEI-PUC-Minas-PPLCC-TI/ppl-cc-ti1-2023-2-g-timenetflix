@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Alerta para o filme mais recente após 5 segundos
             setTimeout(() => {
                 alert('Atençào: O filme mais recente é ' + recentMovies[0].title);
-            }, 5000);
+            }, 3000);
         });
 });
 

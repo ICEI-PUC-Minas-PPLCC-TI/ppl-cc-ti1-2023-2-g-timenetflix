@@ -1,0 +1,123 @@
+body{
+  font-family: 'Montserrat', sans-serif;
+  background-color: #ED6E21 36% 16%; /* Cor de fundo do corpo */
+  margin: 0;
+  padding: 0;
+}
+
+#movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: 1px solid #EDAC21;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  flex: 0 0 24%; /* Ajuste a largura conforme necessário */
+  overflow: hidden;
+  transition: transform 0.3s ease; /* Efeito de transição suave ao passar o mouse */
+  background-color: #EDAC21;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card {
+    flex: 0 0 20%; /* Defina a largura desejada para os cartões */
+    border: 4px solid #F09625;
+    padding: 0.5%;
+    margin: 0.5%;
+    width: 20%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Estilo para o título do filme */
+.movie-card h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+  img {
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+    border-bottom: 3px solid #ED6E21; /* Linha separadora abaixo da imagem */
+  }
+  
+  .clear {
+    clear: both;
+  }
+  
+  /* Form container styling */
+  #form {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #bbbbbb;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+  }
+  
+  
+  /* Label styling */
+  label {
+    display: block;
+    padding: 2px;
+    padding-left: 1px;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 10%;
+    padding: 20px;
+    padding-left: 10px;
+    margin: 10px auto;
+    border: 1px solid #F04318;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  #movie-form input[type="date"] {
+    width: 10%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #F04318;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #fff; /* Cor de fundo */
+    color: #333; /* Cor do texto */
+  }
+  
+  /* Styling for the submit button */
+  input[type="submit"] {
+    background: #F04318;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  /* Styling for disabled select elements */
+  select:disabled {
+    background: #eee;
+    cursor: not-allowed;
+  }
+  
+  #search-btn {
+    background: #F04318;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: block;
+    margin: 25px auto;
+  }
+  

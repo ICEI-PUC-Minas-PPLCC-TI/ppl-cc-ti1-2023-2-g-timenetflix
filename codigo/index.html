@@ -1,71 +1,131 @@
-    <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Avaliação</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-
-</head>
-<body>
-    <!-- Botão "Deixar minha avaliação" -->
-    <button id="btn" class="btnDeixarAvaliacao">Deixar minha avaliação</button>
-
-    
-    <!-- Popup de Avaliação -->
-    <div id="popupAvaliacao" class="popup">
-        <!-- Conteúdo do formulário -->
-        <div class="nome">
-            <span id="nomedoUsuario">Nome do Usuário</span>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="assets/list-filmes/css/style.css" />
+    <link rel="stylesheet" href="assets/theme-switcher/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script src="assets/list-filmes/scripts/app.js" defer></script>
+    <script src="assets/theme-switcher/scripts/app.js" defer></script>
+    <title>What Watch</title>
+  </head>
+  <body>
+    <header>
+      <h1>W2W</h1>
+      <nav>
+        <ul>
+          <li><a href="pages/preferences/index.html">Preferências</a></li>
+          <li>
+            <a href="pages/two-recommendations/index.html">Recomendações</a>
+          </li>
+          <li><a href="pages/Movies/index.html">Atores</a></li>
+          <li><a href="pages/sprint3/index.html">Notificações</a></li>
+          <li>
+            <a href="pages/Sprint 3 - Karen Satiro/index.html">Calendário</a>
+          </li>
+          <li><a href="pages/Sprint-3-Felipe/index.html">Favoritos</a></li>
+          <li><a href="pages/avaliacoes/index.html">Avaliações</a></li>
+        </ul>
+      </nav>
+      <div class="dropdown">
+        <button
+          class="dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Temas
+        </button>
+        <ul class="dropdown-menu">
+          <div class="dropdown-item">
+            <label for="theme-selector">Select Theme:</label>
+            <select id="theme-selector">
+              <option value="minecraft">minecraft</option>
+              <option value="horror">horror</option>
+              <option value="commedy">commedy</option>
+              <option value="space">space</option>
+              <option value="haze-purple">haze-purple</option>
+              <!-- Add options for other themes -->
+            </select>
+          </div>
+        </ul>
+      </div>
+    </header>
+    <main class="content">
+      <div class="now-playing">
+        <h1>Lançamentos</h1>
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            <!-- load data here -->
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-
-        <div class="estrela">
-            <span id="nota">Nota:</span>
-            <a href="javascript:void(0)" onclick="Avaliar(1)">
-                <img src="imagens/star0.png" id="s1"></a>
-            
-            <a href="javascript:void(0)" onclick="Avaliar(2)">
-                <img src="imagens/star0.png" id="s2"></a>
-            
-            <a href="javascript:void(0)" onclick="Avaliar(3)">
-                <img src="imagens/star0.png" id="s3"></a>
-            
-            <a href="javascript:void(0)" onclick="Avaliar(4)">
-                <img src="imagens/star0.png" id="s4"></a>
-            
-            <a href="javascript:void(0)" onclick="Avaliar(5)">
-                <img src="imagens/star0.png" id="s5"></a> <p id="rating">0</p>
+      </div>
+      <div id="popular" class="gallery">
+        <h2>Popular</h2>
+        <div class="wrapper">
+          <button title="Anterior" type="button" id="left" disabled="true">
+            <i class="ph-fill ph-caret-left"></i>
+          </button>
+          <ul class="gallery-inner"></ul>
+          <button title="Próximo" type="button" id="right">
+            <i class="ph-fill ph-caret-right"></i>
+          </button>
         </div>
-            
-        <textarea id="comentario" placeholder="Escreva aqui seu comentário"></textarea>
-
-        <div class="recomenda">
-            <span id="recomenda">Você recomenda?</span>
-            <span class="emoji" data-recomendacao="Sim" id="recomenda-feliz">😊</span>
-            <span class="emoji" data-recomendacao="Não" id="recomenda-triste">☹️</span>            
+      </div>
+      <div id="upcoming" class="gallery">
+        <h2>Por vir</h2>
+        <div class="wrapper">
+          <button title="Anterior" type="button" id="left" disabled="true">
+            <i class="ph-fill ph-caret-left"></i>
+          </button>
+          <ul class="gallery-inner"></ul>
+          <button title="Próximo" type="button" id="right">
+            <i class="ph-fill ph-caret-right"></i>
+          </button>
         </div>
-
-        <div class="container">
-            <button id="btnFecharPopup" class="btnFecharPopup">Fechar</button>
-
-            <button id="btnEnviarAvaliacao" class="btnEnviarAvaliacao">Enviar minha avaliação</button>
-            <div id="loadingIcon" class="loading-icon"></div>
-
+      </div>
+      <div id="top-rated" class="gallery">
+        <h2>Bem avaliados</h2>
+        <div class="wrapper">
+          <button title="Anterior" type="button" id="left" disabled="true">
+            <i class="ph-fill ph-caret-left"></i>
+          </button>
+          <ul class="gallery-inner"></ul>
+          <button title="Próximo" type="button" id="right">
+            <i class="ph-fill ph-caret-right"></i>
+          </button>
         </div>
-
-    </div>
-
-    <ul id="avaliacoesUsuarios">
-        <!-- As avaliações serão adicionadas aqui dinamicamente via JavaScript -->
-    </ul>
-
-    <!-- Botão "Ver mais avaliações" -->
-    <button id="btnVerMaisAvaliacoes" class="btnVerMaisAvaliacoes">Ver mais avaliações</button>
-
-    <script src="script.js"></script>
-</body>
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
-
