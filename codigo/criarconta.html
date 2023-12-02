@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="criarconta.css">
+  <title>Criar Conta</title>
+</head>
+
+<body>
+   
+    <div class="header">
+
+        <div class="logo">
+          <a href="#">
+            <img src="imagens/logowhatwatch.png" alt="">
+          </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Crie sua Conta</h1>
+        <form onsubmit="criarConta(event)">
+            <div class="form-group">
+                <input required type="name" placeholder="Nome completo">
+            </div>
+            <div class="form-group">
+                <input required type="username" placeholder="Nome de usuário">
+            </div>
+            <div class="form-group">
+                <input required type="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input required type="password" placeholder="Senha">
+            </div>
+            <div class="form-group">
+                <input type="password" id="confirm-password" placeholder="Confirme a sua senha">
+            </div>
+            <button type="submit">Criar conta</button>
+        </form>
+
+        <div>
+            <a href='entrar.html'><button type="login">Já tenho uma conta</button></a>
+        </div>
+
+        <div class="home-button">
+            <a href='index.html'><button name="home-button">Página inicial</button></a>
+        </div>
+    </div>
+
+    <script src="scriptconta.js"></script>
+</body>
+</html>
