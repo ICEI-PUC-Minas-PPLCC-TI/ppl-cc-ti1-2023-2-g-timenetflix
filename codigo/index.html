@@ -1,131 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="assets/list-filmes/css/style.css" />
-    <link rel="stylesheet" href="assets/theme-switcher/css/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <script src="assets/list-filmes/scripts/app.js" defer></script>
-    <script src="assets/theme-switcher/scripts/app.js" defer></script>
-    <title>What Watch</title>
+    <link rel="stylesheet" href="./assets/styles/entrar.css" />
+    <title>Entrar</title>
   </head>
+
   <body>
-    <header>
-      <h1>W2W</h1>
-      <nav>
-        <ul>
-          <li><a href="pages/preferences/index.html">Preferências</a></li>
-          <li>
-            <a href="pages/two-recommendations/index.html">Recomendações</a>
-          </li>
-          <li><a href="pages/Movies/index.html">Atores</a></li>
-          <li><a href="pages/sprint3/index.html">Notificações</a></li>
-          <li>
-            <a href="pages/Sprint 3 - Karen Satiro/index.html">Calendário</a>
-          </li>
-          <li><a href="pages/Sprint-3-Felipe/index.html">Favoritos</a></li>
-          <li><a href="pages/avaliacoes/index.html">Avaliações</a></li>
-        </ul>
-      </nav>
-      <div class="dropdown">
-        <button
-          class="dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Temas
-        </button>
-        <ul class="dropdown-menu">
-          <div class="dropdown-item">
-            <label for="theme-selector">Select Theme:</label>
-            <select id="theme-selector">
-              <option value="minecraft">minecraft</option>
-              <option value="horror">horror</option>
-              <option value="commedy">commedy</option>
-              <option value="space">space</option>
-              <option value="haze-purple">haze-purple</option>
-              <!-- Add options for other themes -->
-            </select>
+    <div class="header">
+      <div class="logo">
+        <a href="#">
+          <img src="./assets/imagens/logowhatwatch.png" alt="" />
+        </a>
+      </div>
+    </div>
+
+    <div class="login_body">
+      <div class="login_box">
+        <h2>Entrar</h2>
+
+        <form onsubmit="entrarNaConta(event)">
+          <div class="input_box">
+            <input
+              required
+              type="email ou usarname"
+              placeholder="Email ou nome de usuário"
+            />
           </div>
-        </ul>
-      </div>
-    </header>
-    <main class="content">
-      <div class="now-playing">
-        <h1>Lançamentos</h1>
-        <div id="carouselExample" class="carousel slide">
-          <div class="carousel-inner">
-            <!-- load data here -->
+
+          <div class="input_box">
+            <input required type="password" placeholder="Senha" />
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+
+          <div>
+            <button class="submit">Entrar</button>
+          </div>
+        </form>
+
+        <div class="support">
+          <div class="remember">
+            <span
+              ><input
+                type="checkbox"
+                style="margin: 0; padding: 0; height: 13px"
+            /></span>
+            <span>Lembre-se de mim</span>
+          </div>
+        </div>
+
+        <div class="login_footer">
+          <div class="sign_up">
+            <form onsubmit="criarConta(event)"></form>
+            <p>Novo por aqui? <a href="criarconta.html">Crie sua conta</a></p>
+          </div>
+
+          <div class="terms">
+            <p>
+              Esta página é protegida pelo Google reCAPTCHA para garantir que
+              você não é um robô. <a href="#">Saiba mais</a>
+            </p>
+          </div>
         </div>
       </div>
-      <div id="popular" class="gallery">
-        <h2>Popular</h2>
-        <div class="wrapper">
-          <button title="Anterior" type="button" id="left" disabled="true">
-            <i class="ph-fill ph-caret-left"></i>
-          </button>
-          <ul class="gallery-inner"></ul>
-          <button title="Próximo" type="button" id="right">
-            <i class="ph-fill ph-caret-right"></i>
-          </button>
-        </div>
-      </div>
-      <div id="upcoming" class="gallery">
-        <h2>Por vir</h2>
-        <div class="wrapper">
-          <button title="Anterior" type="button" id="left" disabled="true">
-            <i class="ph-fill ph-caret-left"></i>
-          </button>
-          <ul class="gallery-inner"></ul>
-          <button title="Próximo" type="button" id="right">
-            <i class="ph-fill ph-caret-right"></i>
-          </button>
-        </div>
-      </div>
-      <div id="top-rated" class="gallery">
-        <h2>Bem avaliados</h2>
-        <div class="wrapper">
-          <button title="Anterior" type="button" id="left" disabled="true">
-            <i class="ph-fill ph-caret-left"></i>
-          </button>
-          <ul class="gallery-inner"></ul>
-          <button title="Próximo" type="button" id="right">
-            <i class="ph-fill ph-caret-right"></i>
-          </button>
-        </div>
-      </div>
-    </main>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
+    </div>
+
+    <script src="scriptconta.js"></script>
+    <script>
+      window.addEventListener("load", () => {
+        const usuarioAutenticado = localStorage.getItem("usuarioAutenticado");
+        if (!usuarioAutenticado) {
+          return;
+        }
+        window.location.href = "/codigo/inicio.html";
+      });
+    </script>
   </body>
 </html>

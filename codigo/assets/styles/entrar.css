@@ -5,8 +5,7 @@ body {
     width: 100%;
     position: relative;
     background-image: url(../imagens/backgroundlogin.jpg);
-    background-size: 100%;
-    background-image: cover;
+    background-size: cover;
     background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
 }
