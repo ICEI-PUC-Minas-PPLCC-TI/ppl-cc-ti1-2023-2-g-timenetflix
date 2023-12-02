@@ -1,0 +1,20 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "nomeCompleto": "Nome Sobrenome",
+        "username": "usuario123",
+        "email": "usuario@example.com",
+        "senha": "senha123"
+      },
+      {
+        "id": 2,
+        "nomeCompleto": "Outro Nome",
+        "username": "outroUsuario",
+        "email": "outro@example.com",
+        "senha": "outraSenha123"
+      }
+    ]
+  }
+  
+//Link do jsonserver: https://replit.com/join/iwbyitqbcn-karencriscosta
