@@ -39,7 +39,7 @@ async function criarConta(event) {
       alert("Conta criada com sucesso!"); // Exibe uma mensagem de sucesso (pode ser ajustada conforme necessário)
       localStorage.setItem("usuarioAutenticado", true);
       localStorage.setItem("usuario", data.id);
-      window.location.href = "/codigo/inicio.html";
+      window.location.href = "/inicio.html";
       // Atualiza o banco de dados no localStorage
     } else {
       alert("Houve um problema ao criar a conta.");
@@ -74,7 +74,7 @@ async function entrarNaConta(event) {
         alert("Login bem sucedido!");
         localStorage.setItem("usuarioAutenticado", true);
         localStorage.setItem("usuario", data[0].id);
-        window.location.href = "/codigo/inicio.html";
+        window.location.href = "/inicio.html";
       } else {
         alert(
           "Nome de usuário ou senha inválidos. Por favor, tente novamente."
@@ -105,7 +105,7 @@ function verificarAutenticacao() {
 function sairDaConta() {
   localStorage.removeItem("usuarioAutenticado");
   localStorage.removeItem("usuario");
-  window.location.href = "/codigo/index.html";
+  window.location.href = "/index.html";
   verificarAutenticacao();
 }
 
