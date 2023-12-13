@@ -1,10 +1,10 @@
 <<<<<<< HEAD
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: What to Whatch
 authors:
-  - family-names: 
-    given-names: 
+  - family-names: Palmer Baeta Ventura da Cruz Azevedo
+    given-names: Bernardo
   - family-names: 
     given-names: 
   - family-names: 
@@ -24,12 +24,14 @@ authors:
     family-names: 
     given-names: 
 keywords:
-  - 
-  - 
-repository-code: 
+  - frontend 
+  - javascript
+  - TMDB
+  - movies 
+repository-code: https://github.com/ICEI-PUC-Minas-PPLCC-TI/ti-1-ppl-cc-m-20232-timenetflix
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2023-12-12
 =======
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
