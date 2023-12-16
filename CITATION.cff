@@ -11,18 +11,22 @@ authors:
     given-names: Rodrigo
   - family-names: Compiani Neto
     given-names: Adelino
-  - family-names: Cristina Satiro da Costa
-    given-names: Karen
+  - family-names: Satiro da Costa
+    given-names: Karen Cristina
   - family-names: 
     given-names:
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Nepomuceno Curto
+    given-names: Hayala
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Mauro Pereira
+    given-names: Lucio 
+- name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Vieira Carneiro
+    given-names: Rommel
 keywords:
   - frontend 
   - javascript
